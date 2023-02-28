@@ -1,13 +1,19 @@
 import processing.video.*;
 
 String density = "N@#W9876543210?!abc;:+=,._ ";
+//String density = " ·.:,;#'+*`=?!¬#^˜·$%/()";
 Capture video;
 PFont courier;
+PFont c64;
+boolean right;
+
 
 void setup() {
   size(1600, 900);
-  courier = createFont("Courier.ttf", 16);
+  courier = createFont("../Fonts/Courier.ttf", 16);
+  c64 = createFont("../Fonts/C64_Pro_Mono-STYLE.ttf", 16);
   textFont(courier);
+  //textFont(c64);
   textLeading(16);
   video = new Capture(this, 175, 60, 30);
   video.start();
@@ -15,6 +21,8 @@ void setup() {
 
 void draw() {
   if (mouseX <= width/2) {
+    right = false;
+    fill(255);
     
     if (video.available()) {
       video.read();
@@ -48,9 +56,15 @@ void draw() {
     }
     
     text(asciiImage, 0, 0);
+    
     } else {
-      textSize(100);
-      background(0);
-      text("Pipo", width/3, height/2);
+      if (!right) {
+        background(220);
+        right = true;
+      }
+      
+      noStroke();
+      fill(random(255), random(255), random(255), random(255)); //r, g, b, a
+      circle(random(width), random(height), random(20));
     }
 }
