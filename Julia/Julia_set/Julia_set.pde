@@ -5,12 +5,14 @@ void setup(){
   colorMode(HSB, 1);
 }
 
+float xoff = 0.0;
+float yoff = 0.0;
 void draw(){
   background(255);
-  
-  float ca = 0.27;
-  float cb = 0.49;
-  
+  xoff = xoff + 0.02;
+  yoff = yoff - 0.01;
+  float ca = noise(xoff)-0.75;
+  float cb = cos(yoff)/1.2;
   float w = 5;
   float h = (w * height)/ width;
   
