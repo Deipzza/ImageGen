@@ -1,6 +1,6 @@
 void randomLetters() {
   if (!right) {
-    background(220);
+    background(0);
     right = true;
   }
   System.out.println(g.backgroundColor);
