@@ -8,6 +8,8 @@ PFont courier;
 PFont c64;
 boolean right;
 int frames = 0;
+float xoff = 0.0;
+float yoff = 0.0;
 
 void displayName(String name) {
   fill(255);
@@ -36,7 +38,7 @@ void draw() {
     randomLetters();
     displayName("Colorful letters");
   } else if ((mouseX > width/2) && (mouseY <= height/2)) {
-    smallerLines();
-    displayName("Smaller Lines");
+    julia();
+    displayName("Julia");
   }
 }

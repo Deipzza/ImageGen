@@ -1,25 +1,20 @@
-float angle = 0;
-
-void setup(){
-  size(800, 600);
-  colorMode(RGB, 1);
-}
-
-void draw(){
+void julia(){
   background(255);
-  
+  xoff = xoff + 0.02;
+  yoff = yoff - 0.01;
+  float ca = noise(xoff)-0.75;
+  float cb = cos(yoff)/1.2;
   float w = 5;
   float h = (w * height)/ width;
   
   float xmin = -w/2;
   float ymin = -h/2;
   
-  loadPixels();
-  
-  int max_iter = 100;
-  
   float xmax = xmin + w;
   float ymax = ymin + h;
+  
+  loadPixels();
+  int max_iter = 100;
   
   float dx = (xmax - xmin) / (width);
   float dy = (ymax - ymin) / (height);
@@ -36,22 +31,21 @@ void draw(){
       while(iter < max_iter){
         float aa = a * a;
         float bb = b * b;
-        float two_ab = 2.0 * a * b;
-        
-        // redefino para hacer "efectiva" la iteracion
-        a = aa - bb + x;
-        b = two_ab + y;
-        
-        if (a*a + b*b > 20){
+        if (aa + bb > 4.0){
           break;
         }
+        
+        float two_ab = 2.0 * a * b;
+        a = aa - bb + ca;
+        b = two_ab + cb;
         iter++;
       }
       if (iter == max_iter){
         pixels[i+j*width] = color(0);
       } 
       else {
-        pixels[i+j*width] = color(sqrt(float(iter) / max_iter));
+        float hu = sqrt(float(iter) / max_iter);
+        pixels[i+j*width] = color(hu, 255, 150);
       }
       x += dx;
     }
