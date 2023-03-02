@@ -1,4 +1,9 @@
 void julia(){
+  if (!julia_color) {
+    colorMode(HSB, 1);
+    julia_color = true;
+  }
+  
   background(255);
   xoff = xoff + 0.02;
   yoff = yoff - 0.01;

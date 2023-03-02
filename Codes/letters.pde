@@ -5,6 +5,11 @@ void randomLetters() {
     background(0);
     block_bg = true;
   }
+  
+  if (julia_color) {
+    julia_color = false;
+    colorMode(RGB, 255);
+  }
 
   noStroke();
   fill(random(255), random(255), random(255), random(255)); //r, g, b, a

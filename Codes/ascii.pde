@@ -1,10 +1,15 @@
 void asciiCam() {
   fill(255);
   textAlign(LEFT);
-  textSize(15);
+  textSize(16);
   textFont(courier);
   textLeading(15);
   background(0);
+  
+  if (julia_color) {
+    julia_color = false;
+    colorMode(RGB, 255);
+  }
   
   if (video.available()) {
     video.read();
