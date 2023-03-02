@@ -6,7 +6,7 @@ String density_2 = "   N@#W9876543210?!abc;:+=,._ ";
 Capture video;
 PFont courier;
 PFont c64;
-boolean right;
+boolean block_bg;
 int frames = 0;
 float xoff = 0.0;
 float yoff = 0.0;
@@ -26,19 +26,23 @@ void setup() {
   
   video = new Capture(this, 175, 60, 30);
   video.start();
-  System.out.println(g.backgroundColor);
 }
 
 void draw() {
   if ((mouseX <= width/2) && (mouseY <= height/2)) {
-    right = false;
+    block_bg = false;
     asciiCam();
     displayName("ASCII Cam");
   } else if ((mouseX <= width/2) && (mouseY > height/2)) {
     randomLetters();
     displayName("Colorful letters");
   } else if ((mouseX > width/2) && (mouseY <= height/2)) {
+    block_bg = false;
+    clock();
+    displayName("?");
+  } else {
+    block_bg = false;
     julia();
-    displayName("Julia");
+    displayName("Julia Fractal");
   }
 }

@@ -5,7 +5,6 @@ void asciiCam() {
   textFont(courier);
   textLeading(15);
   background(0);
-  System.out.println(g.backgroundColor);
   
   if (video.available()) {
     video.read();
