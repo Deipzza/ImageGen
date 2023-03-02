@@ -1,12 +1,13 @@
 void asciiCam() {
+  // configuración básica de la tipografía
   fill(255);
   textAlign(LEFT);
-  textSize(16);
+  textSize(15);
   textFont(courier);
   textLeading(15);
   background(0);
   
-  if (julia_color) {
+  if (julia_color) { // volver a escala de colores RGB en caso de venir desde Julia
     julia_color = false;
     colorMode(RGB, 255);
   }
@@ -15,13 +16,14 @@ void asciiCam() {
     video.read();
   }
   
-  video.loadPixels();
+  video.loadPixels(); // cargar el arreglo de pixeles del video
   
   String asciiImage = "";
   
   for (int j = 0; j < video.height; j++) {
     for (int i = 0; i < video.width; i++) {
       int pixelIndex = (i + (j * video.width));
+      // Obtener los valores de color del pixel y promediar para asignarle un caracter de acuerdo a su "intensidad" o brillo
       float r = red(video.pixels[pixelIndex]);
       float g = green(video.pixels[pixelIndex]);
       float b = blue(video.pixels[pixelIndex]);
@@ -30,14 +32,10 @@ void asciiCam() {
       int charIndex = floor(map(avg, 0, 255, len-1, 0));
       char c = density.charAt(charIndex);
       
-      if (c == ' ') {
-        asciiImage += " ";
-      } else {
-        asciiImage += c;
-      }
+      asciiImage += c; // concatenar el caracter
     }
     asciiImage += "\n";
   }
   
-  text(asciiImage, 0, 50);
+  text(asciiImage, 0, 14); // mostrar
 }
