@@ -10,11 +10,6 @@ String density = "@WMN#9876543210?abc!;:+=_,. ";
 Capture video;
 PFont courier;
 
-// Julia fractal
-float xoff = 0.0;
-float yoff = 0.0;
-boolean julia_color = false;
-
 // Warning windows
 PFont c64;
 PImage win_bg;
@@ -22,6 +17,14 @@ float window_x = random(width);
 float window_y = random(height);
 float window_width = random(200, 400);
 float window_height = random(100, 250);
+
+// Square
+float angle;
+
+// Julia fractal
+float xoff = 0.0;
+float yoff = 0.0;
+boolean julia_color = false;
 
 void setup() {
   size(1600, 900);
@@ -36,27 +39,19 @@ void setup() {
 
 void draw() {
   frames += 1;
-  if ((mouseX < width/2) && (mouseY < height/2)) { // cuadrante superior izquierdo
+  if ((mouseX <= width/2) && (mouseY <= height/2)) { // cuadrante superior izquierdo
+    rectMode(CORNER);
     block_bg = false;
     asciiCam();
-  } else if ((mouseX < width/2) && (mouseY > height/2)) { // cuadrante inferior izquierdo
-    randomLetters();
-  } else if ((mouseX > width/2) && (mouseY < height/2)) { // cuadrante superior derecho
+  } else if ((mouseX <= width/2) && (mouseY > height/2)) { // cuadrante inferior izquierdo
+    rectMode(CENTER);
+    colorSquare();
+  } else if ((mouseX > width/2) && (mouseY <= height/2)) { // cuadrante superior derecho
+    rectMode(CORNER);
     errorMsg();
-  /*} else if ((mouseX == width/2) || (mouseY == height/2)) { 
-    background(0);*/
   } else { // cuadrante inferior derecho
+    rectMode(CORNER);
     block_bg = false;
     julia();
   }
-  /*
-  // Don't know if this works so I'll comment it 
-  if (mouseX > (width / 2) - ((width / 2) * 0.1)) {
-    float x_norm = float(mouseX) / (width / 2); 
-    float y_norm = float(mouseY) / (height / 2);
-    fill(255, 255, 255, 1 - x_norm);
-    rect(0, 0, width, height);
-    //System.out.println("a");
-  }
-  */
 }

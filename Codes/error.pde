@@ -16,7 +16,8 @@ void errorMsg() {
   if (frames % 5 == 0) { // ejecutar cada 5 frames
     if ((new_x < width) && (new_y < height)) { // evitar que se los cuadros se salgan de la ventana del programa
       fill(255);
-      stroke(4);
+      stroke(0);
+      strokeWeight(1);
       rect(new_x, new_y, window_width, window_height, 10);
       fill(34, 75, 240);
       rect(new_x, new_y, window_width, window_height / 10, 10);
@@ -38,4 +39,5 @@ void errorMsg() {
       window_height = random(100, 250);
     }
   }
+  stroke(0);
 }
