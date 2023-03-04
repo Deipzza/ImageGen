@@ -1,9 +1,14 @@
-void julia(){
-  if (!julia_color) {
-    colorMode(HSB, 1);
-    julia_color = true;
-  }
-  
+float angle = 0;
+float xoff = 0.0;
+float yoff = 0.0;
+
+void setup(){
+  size(1600, 900);
+  colorMode(HSB, 1);
+}
+
+
+void draw(){
   background(255);
   xoff = xoff + 0.02;
   yoff = yoff - 0.01;
@@ -19,7 +24,7 @@ void julia(){
   float ymax = ymin + h;
   
   loadPixels();
-  int max_iter = 100;
+  int max_iter = 20;
   
   float dx = (xmax - xmin) / (width);
   float dy = (ymax - ymin) / (height);
