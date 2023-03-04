@@ -16,5 +16,5 @@ Para este no tuvimos una inspiración concreta más que nuestros recuerdos de la
 ### Cuadrante #3: Rotating square.
 En este caso usamos la idea de cuadrados concéntricos rotando, pudiendo cambiar sus colores y crear un efecto degradado.
 
-### Cuadrante #4: Fractal de Julia.
+### Cuadrante #4: Julia fractal.
 Finalmente, para este nuestra inspiración fue una exposición que realizamos para la asignatura "Sistemas complejos", en donde hablamos del conjunto de Julia y usamos código de Python para generar diferentes versiones de este. Por lo que nos basamos en este código para hacer su versión en Processing y generar una animación.
