@@ -4,26 +4,30 @@ void julia(){
     julia_color = true;
   }
   
-  background(255);
+  background(255); 
+  
+  // Se introduce ruido a la variable C
   xoff = xoff + 0.02;
   yoff = yoff - 0.01;
   float ca = noise(xoff)-0.75;
   float cb = cos(yoff)/1.2;
-  float w = 5;
-  float h = (w * height)/ width;
   
+  // Se establecen los rangos de valores del "Plano complejo"
+  float w = 5;
+  float h = (w * height)/ width;  
   float xmin = -w/2;
   float ymin = -h/2;
-  
   float xmax = xmin + w;
   float ymax = ymin + h;
   
-  loadPixels();
-  int max_iter = 100;
+  float dx = (xmax - xmin) / (width); // tamaño de paso en x
+  float dy = (ymax - ymin) / (height); // tamaño de paso en y
   
-  float dx = (xmax - xmin) / (width);
-  float dy = (ymax - ymin) / (height);
+  loadPixels();   // Se cargan los pixeles del array "pixels"
+  int max_iter = 20; // Se establece el maximo de iteraciones para la sucesion
   
+  // Para cada valor de x, y en el plano complejo, con tamaño de paso dx, dy 
+  // se realizan las iteraciones
   float y = ymin;
   for (int j = 0; j < height; j++){
     float x = xmin;
@@ -45,17 +49,19 @@ void julia(){
         b = two_ab + cb;
         iter++;
       }
+      
+      // Se colorean los pixeles segun la cantidad de iteraciones que soportan
       if (iter == max_iter){
-        pixels[i+j*width] = color(0);
+        pixels[i+j*width] = color(0); 
       } 
       else {
         float hu = sqrt(float(iter) / max_iter);
         pixels[i+j*width] = color(hu, 255, 150);
       }
-      x += dx;
+      x += dx; // se pasa al siguiente valor en x
     }
-    y += dy;
+    y += dy; // se pasa al siguiente valor de y
     
   }
-  updatePixels();
+  updatePixels(); // Se actualiza el array pixels con los pixeles generados en las iteraciones
 }
