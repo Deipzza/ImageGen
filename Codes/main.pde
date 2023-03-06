@@ -3,7 +3,10 @@ import processing.video.*; // librería para la captura de video desde la cámar
 // VARIABLES GLOBALES
 // General
 boolean block_bg;
+boolean fade = false;
 int frames = 0;
+float alpha;
+
 
 // ASCII cam
 String density = "@WMN#9876543210?abc!;:+=_,. ";
@@ -45,6 +48,7 @@ void draw() {
     asciiCam();
   } else if ((mouseX <= width/2) && (mouseY > height/2)) { // cuadrante inferior izquierdo
     rectMode(CENTER);
+    block_bg = false;
     colorSquare();
   } else if ((mouseX > width/2) && (mouseY <= height/2)) { // cuadrante superior derecho
     rectMode(CORNER);
@@ -53,5 +57,18 @@ void draw() {
     rectMode(CORNER);
     block_bg = false;
     julia();
+  }
+  if ((mouseX >= width/4) && (mouseX <= width/2)) {
+    alpha = map(mouseX, width/4, width/2, 0, 255);
+    fill(255, alpha);
+    strokeWeight(0);
+    square(0, 0, 2000);
+  }
+  if ((mouseX >= width/2) && (mouseX <= 3*width/4)) {
+    alpha = map(mouseX, 3*width/4, width/2, 0, 255);
+    fill(255, alpha);
+    strokeWeight(0);
+    square(0, 0, 2000);
+    block_bg = false;
   }
 }
