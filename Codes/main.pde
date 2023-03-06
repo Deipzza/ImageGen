@@ -58,6 +58,7 @@ void draw() {
     block_bg = false;
     julia();
   }
+  
   if ((mouseX >= width/4) && (mouseX <= width/2)) {
     alpha = map(mouseX, width/4, width/2, 0, 255);
     fill(255, alpha);
