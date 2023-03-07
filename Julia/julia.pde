@@ -7,9 +7,11 @@ void setup(){
   colorMode(HSB, 1);
 }
 
-
+float alpha = 0.0;
 void draw(){
   background(255);
+  fill(0);
+  //square(0,0,700);
   xoff = xoff + 0.02;
   yoff = yoff - 0.01;
   float ca = noise(xoff)-0.75;
@@ -24,6 +26,7 @@ void draw(){
   float ymax = ymin + h;
   
   loadPixels();
+  square(0,0,700);
   int max_iter = 20;
   
   float dx = (xmax - xmin) / (width);
@@ -63,4 +66,8 @@ void draw(){
     
   }
   updatePixels();
+  alpha = (mouseX * 1.0) / 1600.0;
+  println(alpha);
+  fill(0, alpha);
+  square(0,0,2000);
 }
