@@ -7,11 +7,14 @@ boolean fade = false;
 int frames = 0;
 float alpha;
 
-
 // ASCII cam
 String density = "@WMN#9876543210?abc!;:+=_,. ";
 Capture video;
 PFont courier;
+boolean color_ascii = true;
+float red_ascii;
+float green_ascii;
+float blue_ascii;
 
 // Warning windows
 PFont c64;
@@ -21,8 +24,11 @@ float window_y = random(height);
 float window_width = random(200, 400);
 float window_height = random(100, 250);
 
-// Square
+// Rotaring squares
 float angle;
+float red_sq;
+float green_sq;
+float blue_sq;
 
 // Julia fractal
 float xoff = 0.0;
@@ -48,28 +54,44 @@ void draw() {
     asciiCam();
   } else if ((mouseX <= width/2) && (mouseY > height/2)) { // cuadrante inferior izquierdo
     rectMode(CENTER);
-    block_bg = false;
     colorSquare();
+    color_ascii = true;
   } else if ((mouseX > width/2) && (mouseY <= height/2)) { // cuadrante superior derecho
     rectMode(CORNER);
     errorMsg();
+    color_ascii = true;
   } else { // cuadrante inferior derecho
     rectMode(CORNER);
     block_bg = false;
     julia();
+    color_ascii = true;
   }
   
-  if ((mouseX >= width/4) && (mouseX <= width/2)) {
-    alpha = map(mouseX, width/4, width/2, 0, 255);
-    fill(255, alpha);
+  if ((mouseX >= width/6) && (mouseX <= width/2)) {
+    alpha = map(mouseX, width/6, width/2, 0, 255);
+    fill(0, alpha);
     strokeWeight(0);
     square(0, 0, 2000);
-  }
-  if ((mouseX >= width/2) && (mouseX <= 3*width/4)) {
-    alpha = map(mouseX, 3*width/4, width/2, 0, 255);
-    fill(255, alpha);
+  } else if ((mouseX >= width/2) && (mouseX <= 2*width/3) && (mouseY <= height/2)) {
+    alpha = map(mouseX, 2*width/3, width/2, 0, 255);
+    fill(0, alpha);
     strokeWeight(0);
     square(0, 0, 2000);
     block_bg = false;
+  }
+  
+  if ((mouseY >= 3*height/8) && (mouseY <= height/2)) {
+    alpha = map(mouseY, 3*height/8, height/2, 0, 255);
+    fill(0, alpha);
+    strokeWeight(0);
+    square(0, 0, 2000);
+    block_bg = false;
+    println(mouseY);
+  } else if ((mouseY >= height/2) && (mouseY <= 5*height/8) && (mouseX < width/2)) {
+    alpha = map(mouseY, 5*height/8, height/2, 0, 255);
+    fill(0, alpha);
+    strokeWeight(0);
+    square(0, 0, 2000);
+    //block_bg = false;
   }
 }

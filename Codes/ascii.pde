@@ -12,6 +12,13 @@ void asciiCam() {
     colorMode(RGB, 255);
   }
   
+  if (color_ascii) {
+    color_ascii = false;
+    red_ascii = random(128, 255);
+    green_ascii = random(128, 255);
+    blue_ascii = random(128, 255);
+  }
+  
   if (video.available()) {
     video.read();
   }
@@ -36,6 +43,6 @@ void asciiCam() {
     }
     asciiImage += "\n";
   }
-  
+  fill(red_ascii, green_ascii, blue_ascii);
   text(asciiImage, 0, 14); // mostrar
 }

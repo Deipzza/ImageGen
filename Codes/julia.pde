@@ -64,4 +64,7 @@ void julia(){
     
   }
   updatePixels(); // Se actualiza el array pixels con los pixeles generados en las iteraciones
+  alpha = ((mouseX >= width/2) && (mouseX <= 2*width/3)) ? map(mouseX, 2*width/3, width/2, 0, 1) : map(mouseY, 5*height/8, height/2, 0, 1);
+  fill(0, alpha);
+  square(0, 0, 2000);
 }
