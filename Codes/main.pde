@@ -67,12 +67,13 @@ void draw() {
     color_ascii = true;
   }
   
-  if ((mouseX >= width/6) && (mouseX <= width/2)) {
+  // Desvanecimiento horizonal
+  if ((mouseX >= width/6) && (mouseX <= width/2)) { // izq - der
     alpha = map(mouseX, width/6, width/2, 0, 255);
     fill(0, alpha);
     strokeWeight(0);
     square(0, 0, 2000);
-  } else if ((mouseX >= width/2) && (mouseX <= 2*width/3) && (mouseY <= height/2)) {
+  } else if ((mouseX >= width/2) && (mouseX <= 2*width/3) && (mouseY <= height/2)) { // der - izq
     alpha = map(mouseX, 2*width/3, width/2, 0, 255);
     fill(0, alpha);
     strokeWeight(0);
@@ -80,18 +81,18 @@ void draw() {
     block_bg = false;
   }
   
-  if ((mouseY >= 3*height/8) && (mouseY <= height/2)) {
+  // Desvanecimiento vertical
+  if ((mouseY >= 3*height/8) && (mouseY <= height/2)) { // arr - aba
     alpha = map(mouseY, 3*height/8, height/2, 0, 255);
     fill(0, alpha);
     strokeWeight(0);
     square(0, 0, 2000);
     block_bg = false;
     println(mouseY);
-  } else if ((mouseY >= height/2) && (mouseY <= 5*height/8) && (mouseX < width/2)) {
+  } else if ((mouseY >= height/2) && (mouseY <= 5*height/8) && (mouseX < width/2)) { // aba - arr
     alpha = map(mouseY, 5*height/8, height/2, 0, 255);
     fill(0, alpha);
     strokeWeight(0);
     square(0, 0, 2000);
-    //block_bg = false;
   }
 }

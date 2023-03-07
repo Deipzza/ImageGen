@@ -12,6 +12,7 @@ void asciiCam() {
     colorMode(RGB, 255);
   }
   
+  // Se escoge un color aleatorio para los caracteres cada que se ingresa
   if (color_ascii) {
     color_ascii = false;
     red_ascii = random(128, 255);
@@ -43,6 +44,7 @@ void asciiCam() {
     }
     asciiImage += "\n";
   }
-  fill(red_ascii, green_ascii, blue_ascii);
+  
+  fill(red_ascii, green_ascii, blue_ascii); // colorear
   text(asciiImage, 0, 14); // mostrar
 }
