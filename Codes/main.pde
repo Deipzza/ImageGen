@@ -88,7 +88,6 @@ void draw() {
     strokeWeight(0);
     square(0, 0, 2000);
     block_bg = false;
-    println(mouseY);
   } else if ((mouseY >= height/2) && (mouseY <= 5*height/8) && (mouseX < width/2)) { // aba - arr
     alpha = map(mouseY, 5*height/8, height/2, 0, 255);
     fill(0, alpha);
