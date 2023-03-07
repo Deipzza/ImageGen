@@ -8,7 +8,8 @@ Luis Antonio Suárez Bula.
 ## Idea de cuadrantes.
 Quisimos realizar el proyecto dividido en cuatro partes debido principalmente a que teníamos varias ideas y queríamos usarlas todas o casi todas, por lo que pensamos que un "collage" o agrupación de estas podría resultar en algo interesante y *desordenado*.
 
-<video src='https://github.com/Deipzza/ImageGen/blob/main/Media/Mi%20video1.mp4'></video>
+https://user-images.githubusercontent.com/83037028/223319942-6f3ffc2b-8346-4dbe-813a-078b895fc4b4.mp4
+
 
 ## Inspiraciones.
 
